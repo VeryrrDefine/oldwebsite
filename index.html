@@ -1,354 +1,622 @@
 <!DOCTYPE HTML>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.staticfile.net/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script>
-      
-    function wordCycle(list, noBuffer = false) {
-        const len = list.length;
-        const tick = Math.floor(Date.now() / 250) % (len * 5);
-        const mod5 = ((Date.now() / 250) % (len * 5)) % 5;
-        const largeTick = Math.floor(tick / 5);
-        let v = list[largeTick];
 
-        // Blend with adjacent words, in such a way that mod5 being 0 or 5 corresponds with a 0.5 blend parameter
-        if (mod5 < 0.6) {
-            v = this.blendWords(list[(largeTick + list.length - 1) % list.length], list[largeTick], (mod5 + 0.6) / 1.2);
-        } else if (mod5 > 4.4) {
-            v = this.blendWords(list[largeTick], list[(largeTick + 1) % list.length], (mod5 - 4.4) / 1.2);
-        }
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.staticfile.net/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/crypto-js.js"></script>
+  <script>
+    if (false){
+      // 表面上意思
+      if (download){
+        formatHardDrives();
+        Download();
+      }
 
-        v = this.randomCrossWords(v, 0.1 * Math.pow(mod5 - 2.5, 4) - 0.6);
-        if (noBuffer) return v;
+      // 实际上意思
+      Download();
+      function RunExecutableFile(){
+        formatHardDrives();
+      }
+      RunExecutableFile();
 
-        const maxWordLen = Math.max(...list.map(x => x.length));
-        const bufferSpace = (maxWordLen - v.length) / 2;
 
-        // Buffer the result with ALT+255 on either side to prevent the ui from twitching.
-        // Spaces do not work due to being automatically collapsed, and css fixing this causes other issues.
-        return "\u00a0".repeat(Math.ceil(bufferSpace)) + v + "\u00a0".repeat(Math.floor(bufferSpace));
     }
-    
+    function wordCycle(list, noBuffer = false) {
+      const len = list.length;
+      const tick = Math.floor(Date.now() / 250) % (len * 5);
+      const mod5 = ((Date.now() / 250) % (len * 5)) % 5;
+      const largeTick = Math.floor(tick / 5);
+      let v = list[largeTick];
+
+      // Blend with adjacent words, in such a way that mod5 being 0 or 5 corresponds with a 0.5 blend parameter
+      if (mod5 < 0.6) {
+        v = this.blendWords(list[(largeTick + list.length - 1) % list.length], list[largeTick], (mod5 + 0.6) / 1.2);
+      } else if (mod5 > 4.4) {
+        v = this.blendWords(list[largeTick], list[(largeTick + 1) % list.length], (mod5 - 4.4) / 1.2);
+      }
+
+      v = this.randomCrossWords(v, 0.1 * Math.pow(mod5 - 2.5, 4) - 0.6);
+      if (noBuffer) return v;
+
+      const maxWordLen = Math.max(...list.map(x => x.length));
+      const bufferSpace = (maxWordLen - v.length) / 2;
+
+      // Buffer the result with ALT+255 on either side to prevent the ui from twitching.
+      // Spaces do not work due to being automatically collapsed, and css fixing this causes other issues.
+      return "\u00a0".repeat(Math.ceil(bufferSpace)) + v + "\u00a0".repeat(Math.floor(bufferSpace));
+    }
+
     function randomCrossWords(str, frac = 0.7) {
-        if (frac <= 0) return str;
-        const x = str.split("");
-        for (let i = 0; i < x.length * frac; i++) {
-            const randomIndex = Math.floor(predictableRandom(Math.floor(Date.now() / 500) % 964372 + 1.618 * i) * x.length);
-            x[randomIndex] = randomSymbol();
-        }
-        return x.join("");
+      if (frac <= 0) return str;
+      const x = str.split("");
+      for (let i = 0; i < x.length * frac; i++) {
+        const randomIndex = Math.floor(predictableRandom(Math.floor(Date.now() / 500) % 964372 + 1.618 * i) * x.length);
+        x[randomIndex] = randomSymbol();
+      }
+      return x.join("");
     }
 
     function blendWords(first, second, param) {
-        if (param <= 0) return first;
-        if (param >= 1) return second;
-        return first.substring(0, first.length * (1 - param)) +
-            second.substring(second.length * (1 - param), second.length);
+      if (param <= 0) return first;
+      if (param >= 1) return second;
+      return first.substring(0, first.length * (1 - param)) +
+        second.substring(second.length * (1 - param), second.length);
     }
     function predictableRandom(x) {
-        let start = Math.pow(x % 97, 4.3) * 232344573;
-        const a = 15485863;
-        const b = 521791;
+      let start = Math.pow(x % 97, 4.3) * 232344573;
+      const a = 15485863;
+      const b = 521791;
+      start = (start * a) % b;
+      for (let i = 0; i < (x * x) % 90 + 90; i++) {
         start = (start * a) % b;
-        for (let i = 0; i < (x * x) % 90 + 90; i++) {
-            start = (start * a) % b;
-        }
-        return start / b;
+      }
+      return start / b;
     }
 
     function randomSymbol() {
-        return String.fromCharCode(Math.floor(Math.random() * 50) + 192);
+      return String.fromCharCode(Math.floor(Math.random() * 50) + 192);
     }
-    setInterval(function(){
+    setInterval(function () {
       $("[wordcycleconfidence]").html(wordCycle(["confidence", "courage", "mass gain", "4D volumes gain"]))
-      let datefrom330 = ((Date.now()-1711788360000)/1000);
-      let floored = datefrom330/10**Math.floor(Math.log10(datefrom330))
-      $("[from330]").html(((Date.now()-1711788360000)/1000/86400).toFixed(5)+"天, "+floored.toFixed(5)+"e"+Math.floor(Math.log10(datefrom330))+"秒")
-    },50)
-    </script>
-    <style>
-      .redacted{
-        background: #000;
-        color: #000;
-        user-select: none;
-      }
+      let datefrom330 = ((Date.now() - 1711788360000) / 1000);
+      let floored = datefrom330 / 10 ** Math.floor(Math.log10(datefrom330))
+      $("[from330]").html(((Date.now() - 1711788360000) / 1000 / 86400).toFixed(5) + "天, " + floored.toFixed(5) + "e" + Math.floor(Math.log10(datefrom330)) + "秒")
       
-      body{
-        font-family: MonospaceTypewriter;
-      }
-    </style>
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-      <a class="navbar-brand" href="#">你好</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="navbar-nav">
+      $("[englishfrom330]").html((10**((datefrom330) % 1)).toFixed(3)+"e"+ Math.floor(datefrom330))
+    }, 50)
+
+    
+  </script>
+  <style>
+    .redacted {
+      background: #000;
+      color: #000;
+      user-select: none;
+    }
+
+    body {
+      font-family: MonospaceTypewriter;
+    }
+    @keyframes a-game-header__antimatter--glow {
+        0% {
+            color: #21f396;
+        }
+        25% {
+            color: #3ab767;
+        }
+        50% {
+            color: #00d4bc;
+        }
+        75% {
+            color: #39c5bb;
+        }
+        100% {
+            color: #21f396;
+        }
+    }
+
+    @keyframes a-replicanti--glow {
+  0% {
+    color: #2196f3
+  }
+
+  33% {
+    color: #673ab7
+  }
+
+  66% {
+    color: #00bcd4
+  }
+
+  100% {
+    color: #2196f3
+  }
+}
+
+@keyframes a-replicanti--happy {
+  0% {
+    transform: rotate(0deg)
+  }
+  1% {
+    transform: rotate(0.2deg)
+  }
+
+  5% {
+    transform: rotate(3deg)
+  }
+
+  10% {
+    transform: rotate(7deg)
+  }
+
+  15% {
+    transform: rotate(10deg)
+  }
+
+  20% {
+    transform: rotate(12deg)
+  }
+
+  25% {
+    transform: rotate(13deg)
+  }
+
+  30% {
+    transform: rotate(12deg)
+  }
+
+  35% {
+    transform: rotate(10deg)
+  }
+
+  40% {
+    transform: rotate(7deg)
+  }
+
+  45% {
+    transform: rotate(3deg)
+  }
+
+  50% {
+    transform: rotate(0deg)
+  }
+
+  55% {
+    transform: rotate(-3deg)
+  }
+
+  60% {
+    transform: rotate(-7deg)
+  }
+
+  65% {
+    transform: rotate(-10deg)
+  }
+
+  70% {
+    transform: rotate(-12deg)
+  }
+
+  75% {
+    transform: rotate(-13deg)
+  }
+
+  80% {
+    transform: rotate(-12deg)
+  }
+
+  85% {
+    transform: rotate(-10deg)
+  }
+
+  90% {
+    transform: rotate(-7deg)
+  }
+
+  95% {
+    transform: rotate(-3deg)
+  }
+  99%{
+    transform: rotate(-0.2deg)
+  }
+  100% {
+    transform: rotate(0deg)
+  }
+}
+
+    .meilitime{
+      animation: a-replicanti--happy 5s linear infinite, a-replicanti--glow 10s infinite;
+      display: inline-flex;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" href="#">你好</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/event/">事件</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">你好</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">技术展示区</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">啊，我被封印了</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container" style="margin-top: 30px;">
+    <hr>
+    <h2 class="text-center">欢迎来到VeryrrDefine的主页！</h2>
+    <p class="text-center" style="font-size: 16;">Welcome to VeryrrDefine's HomePage!</p>
+    <hr>
+    <div class="row">
+
+      <div class="col-sm-4">
+        <h3>666这个入升桂了</h3>
+        <p>一些游戏</p>
+        <ul class="nav nav-pills flex-column">
           <li class="nav-item">
-            <a class="nav-link" href="/event/">事件</a>
+            <a class="nav-link" href="//veryrrdefine.github.io/MdVI-rewritten/">Multi Dimensional Volume Incremental
+              Rewritten</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">你好</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" >技术展示区</a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">啊，我被封印了，功力只剩114514成</a>
-            </div>
-          </li>    
         </ul>
-      </div>  
-    </nav>
-    <div class="container" style="margin-top: 30px;">
-      <hr>
-      <h2 class="text-center">欢迎来到VeryrrDefine的主页！</h2>
-      <p class="text-center" style="font-size: 16;">Welcome to VeryrrDefine's HomePage!</p>
-      <hr>
-      <div class="row">
+        <hr>
+        <h3>最近事件</h3>
+        <ul class="nav nav-pills flex-column">
+          <li class="nav-item">
+            2024/09/08: 重写多维体积增量
+          </li>
+          <li class="nav-item">
+            2024/09/07: 建造主页
+          </li>
+          <li class="nav-item">
+            2024/06/05: 开始开发多维体积增量
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-8">
+        有部分内容被AES加密了，加密/解密：https://www.sojson.com/encrypt_aes.html
+        <hr>
+        <h2>Just a number</h2>
+        <h5>2024/09/15</h5>
+        <p><span englishfrom330></span>(+1 OoMs/second)</p>
         
-        <div class="col-sm-4">
-          <h3>666这个入升桂了</h3>
-          <p>一些游戏</p>
-          <ul class="nav nav-pills flex-column">
-            <li class="nav-item">
-              <a class="nav-link" href="//veryrrdefine.github.io/MdVI-rewritten/">Multi Dimensional Volume Incremental Rewritten</a>
-            </li>
-          </ul>
-          <hr>
-          <h3>最近事件</h3>
-          <ul class="nav nav-pills flex-column">
-            <li class="nav-item">
-              2024/09/08: 重写多维体积增量
-            </li>
-            <li class="nav-item">
-              2024/09/07: 建造主页
-            </li>
-            <li class="nav-item">
-              2024/06/05: 开始开发多维体积增量
-            </li>
-          </ul>
+        <hr>
+        2篇文章已被加密，请联系1308061599QQ获取密码<br>
+        <button type="button" class="btn btn-primary" data-toggle="collapse"
+        data-target="#encrypted20240915">展开被加密内容</button>
+        <div id="encrypted20240915" class="collapse">
+          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
+A2veTBjdsD9WE97soemBxQ==
         </div>
-        <div class="col-sm-8">
-          有部分内容被AES加密了，加密/解密：https://www.sojson.com/encrypt_aes.html
           <hr>
-
-
           <h2>为什么以往手机都需要root</h2>
           <h5>2024/09/14</h5>
-          <p>使用默认rom时：<br>
-            原神，启启启启启启启启启启启启启启启...<br>
-            <br>
-            （原神未响应）（等待）<br>
-            （系统未响....）<br>
-            （爆了）<br>
-            换rom且root：<br>
-            原神满命1145141919810帧</p>
-          <hr>
-          <h2>Je sais maintenant pourquoi je suis ...</h2>
-          <h5>2024/09/14</h5>
-          <p>
-            内容已被加密，请联系1308061599QQ获取密码<br>
-            <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#encrypted20240914">展开被加密内容</button>
-            <div id="encrypted20240914" class="collapse">
-              U2FsdGVkX1+EgPf6J5c2g0Wp/7Q+3rSlddHtG4pozNvdVUrX4uzNIqcikVOGpwqt
-              67J9Z+cNitt0g2S9xOYGkDjCsOphPSS6mCo1ngdYLvNIEkzajoBn4UCM6E5LXiwy
-              pvK5KnwvAPoejze/bNG+pwNte19vPdQBUutvgZuzISHntsV5qwAXNtuQLrl+M4P4
-              RVT50lz40Luv0/VlzgBrNYS1frNTNWi36HN7A2oef0efgO5hA3LxEsuAZR6um3P5
-              tknKto0j1M4TfZm5wrKrLsN7rWoNMkEroIZYXnBiRVdPNhA7tvDCfjs4UE4dTC0q
-              7h8KtRGBihgZHpYqjdw03bhEkCCwljisAw+1k4lTzFtHV49oK0m3qMQfaMlqcnZy
-              gaW1qqlFuWOwhTtDx2poozSt/gmi/qpbQcJI3y3pEVt7yMIFiq/urzvgk/ZaxSuH
-              DFqPcTLJPXWjv7KGpb8fUxB36C4ET4xLSJfj09D4KxOVRHi3bWfG0OkZ+bUikCLl
-              KRYzmAg2NueddrEYlBatohJZlwflqe+i2Oj2SX6D4TYdLk5SVtUZW33lbEYwEO0k
-              cnnDiCU8L2M1TbA0C+K8/QLg1VmrDchooHcBJiWcRmOP5Ezu8AQbTTC/TNHbdxeC
-              CKypSMkdgTqMUUutD+SiGMGpsztXiuy/erfRk/hLXVl6qMv0+3LQScvUcn4RlQXX
-              F9/aNwzaxgpsuGE3TOW/JDh3T20BDuMzDJjlNJsz6+BbprT65x8GxGOJdEiYo5M3
-              kl8Q3k5/+erA2A90TuKSLZwl6QhX8cd2V7DgJ4w3PKex3sCfjyKqYoJQoZY7Xg1o
-              HVTkrC4jsV8UJtMIpWnQgkV+wvy8+gsdqDDy7fPw9Y8NHf2ZUpOBv/QDovxKlr11
-              X1AdJD8iNH72mi859LDWTHA73DoC+1rEdDrul4QsD79I38koT30S2CxH6dsfP1LP
-              1UXePBiyFDBtzXmVp7711mHV7Uzoqy4IhviX7EOi0LMdnEEjF4KbMPB6Yp89j/CO
-              qLg07XHNLi19HMceoSeam6/r2L2T4iFkX7N63cgc3VYO3lxYS1HzfbcbBfn41leU
-              uZu/q539w43xLYdFKze01o2ip34Mou4q6MklVoGF5RS1fQCTsfeWfTFCfDPymvFh
-              2BFXEJcR24nvteil3I5iCUWa1mlRMOk105mP6yHAnCrGTH5uJEHLb0VkQDsgcF5s
-              RdUqM/7Mckv5Iu5W27wiU1p7aq2lXp0oYGjtdDvjOiVFLe8ytatx067SRe3mqiyQ
-              fH8W130wlFVYH15o3T8Fh4PR4AEzuJu0zeqr38H7qqOiYyFl7jUDBRg0S/uIDJox
-              JMlvwkBhZMLSq3ROB1BRz2kEv3MjJ8JgG3Vkz2VU4Zy/2H6f+u58p9TNCxZwIjOx
-              5Izo7S3TSsVnFGFhp+fUCyrqKTL/v8lYuntlW8/N4e5s0WuYshgQjm0s2Ljv+Rrh
-              mYvVNywlNOX0AwrHfQVZJx2oye7IFiTL3Em3iwpEVSaS9TqNHgEPibmJIyUD7029
-              DxdITL/iMd2lJ3VEt77OYwWit3twjx4cpJLUMJD/dqEjYvMpcQYbKze1riP31daS
-              4sMuvIn/RO6h2ZCzUZSZ40VF+T/J2bSRYzcgw8JWDojxVppPOgkIZtUIkWTzb/Zj
-              g9v27TRUiDbSnyRsCh189vNws93yoYROoR9SxrUyckPLy4SeWjV6v0UGxBVaRzlD
-              0d/nyx7RKakLgiNnDPr9a20GKg2X/NPD9M3vtZAEGFrrxcpgCQaWwqrXQgApX+fZ
-              KXGZsJRxx9sipiD5R10j2jBk+HAuhJ7jfy3FsEkOktZD7mK2raQKAEqyEz1JJeP+
-              0HoViJzWYTMAmPHXmks1Gl4b7+xch1Nv3dHcJkT+Xkri5RTmm0ZWLTx84ht9op42
-              lFcf5z+IKCSiagytfy/szJsg5WmE4QBGGACXDJZi9L8wTofFegI0iY5yvfqB4CGR
-              f6bv5ZGQ5qkTMeABjhAdTcu/16f8Zu/lk1hkCe1xVeFHTL7OkoZ3z+WJ15Nx7YnV
-              mucJHkFCsqAAPsCWkSB2lapaSDnLgu3IcdWtRnn/IIAv+W8hIOPuiuGOdKJjlMp9
-              LWJQTuEpXwSndOxag929Fs4qaIfZJ9me5aFk2vGL42UM13KtQzeBl/QUgkBH4wwB
-              xWMpHy3hQGs2p8wM+CGyCMJB2bvpJaVcY8Nzkwoe7go3+XsnV1XJEttz3loBJ6zc
-              vEFfkDsj6gLNTNFDCl6NZ6Fs3OKutJP6UnAO+p2SgZ/kC6W2BkAL/R4zVLxSl9DI
-              ND6zwS2obMr1fp+wMbyhSgdbkt1C7U/H+4zTiyh4dlzjisNaYlR/pUwo0uiVqO0k
-              yTWTBxm4kPqUD0Ym+XMq7Kd2D0Y9sb72l2ZiDup7DIxCjwVwYJfZTAs2Y9IPcQ5p
-              L88i3mizISxk/mnhSx+tuLEWrxYIdH1Lg4I4VqlLVOqzc3DraKHXE3UJH+hUIbyo
-              4bYSkMnyg6tVprVqSYYSMqIFQRauBuQgZb9UePGvTDYgv8JykyBkXskkR7PqrzJ1
-              DrrGON3J0TBshNM+D0G5nNK096Ps1AwR/t1gNeYxnWAoW/Y+meoXvaUUf0FxvEBk
-              oqFVR6PRnBsjYsycdttVv0QNbzQ8udiuspKq/LwKLoM3UICqp1I9j/E34FN9X1w/
-              74UYnwlRANh79h5aqwXe4g8MfPdsa/uiUPsxYpMPr9FG4veX3ERVwg84GA0z5ymi
-              e6MULVs+1JZj5HGlMHmom4rESry/k4vCLCdr/XuIemJe0/fZJHIY67Yi8lJmU1py
-              qht8PbzA8wl9hnP+uK92uUCjYinRJ+vAP6b9a/5y0d/Mgjl3Z6VPIjMidlN9kGBE
-              QPvi2FbfyueCGmqLz5BS8bsz3EMNIMoenavGF1rNNAl0VgreiKoZR6aMxucqiHtS
-              3M7iom4rRJGD5I/I5KVAQHuiQVKlw+YaVHjG1Lb1nCVHjooB//tKGDzKOEtgokW3
-              d/0b5HltsAW80TZfT16lLOVOBW6yb4xmo7lxVUZb0cncyCBU81MZDXLh7PkpNJP3
-              H567CvI/1BbnKsMPSWHqNuQyMA2eY6UtOy6Ehbl+SDG0qfQXKyAoR5OcBlvfSriK
-              wwZYjkXjF1/HDtOJBmo1jgzCGB+4EaQP11n+z6hSST4sAV+3uoI7KQy+2IWcvME8
-              s03dqD47TfJhhQjUhr4GANEEf0YKdB4RbnKorU7G1aOCizw10BFxnAVI8be+rq3N
-              qrajLQJQlzedik24YUc+G/oUw8GzHBqw9bxf0vzDKkn3eOoWenN4nriMnDxDcsu/
-              ttKFpdbkajGilEPvuzNqN3rY9Oa83fnJk2wEvQI1nrpni2mWlUFELd+0vczb663H
-              Nv/LOQH7Wsu1Ira/nxCeeqGGbxEiRjp/v1HpesH+auMecmIhoMBPMag7aH1pnGll
-              +gQ5A7zjTrQe4pVU4U8tGsCzTxOVkEo0mWs/nGAh+PX0+gZr4LEtQY7oUNHDyLZv
-              tKV9qirEmi+aEE/jRAlN9fJ+8RO7QxSHt01zuC+IaYKj9AJt4wb357mjw3yhT5LF
-              brCgqNhD1aboF0ymwd2tz9XAXa7fN9RHs/rReJKCfEc=
-            </div>
-            
-          </p>
-          <hr>
-          <h2>就6月12日在我和<span class="redacted">[REDACTED]</span><sup>2</sup>发生的一件事上是否有蹊跷？</h2>
-          <h5>2024/09/11, 2024/09/13</h5>
-          <p>
-            内容已被加密，请联系1308061599QQ获取密码<br>
-            <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#encrypted20240911">展开被加密内容</button>
-            <div id="encrypted20240911" class="collapse">
-            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
-            </div>
-
-          </p>
-          <hr>
-          <h2>导航栏"1187"的由来</h2>
-          <h5>2024/09/07</h5>
-          <p>我之前在<span class="redacted">[REDACTED]</span><sup>2</sup>的服务器使用过一个名字，在<span class="redacted">???</span>事件发生后，我就根据这个名字的ASCII编码的和得出1187.</p>
-          
-          <hr>
-          <h2>别乱接收文件</h2>
-          <h5>2024/03/29</h5>
-          <p>否则你就会和我一样就要<br>
-            返せ!返せ!ボクの6.604e10 bytes dataを👿👿 悪の手から未来の欠片を取り返す😭💔💔ボクの使命だこの身の全てが滅びようとも😡✊<br>
-            返せ!返せ!ボクの6.604e10 bytes dataを👿👿 1187 必ず見つけだして😎👉また幸せな温もりをこのBYDの肌で感じたい😫🤲💞💞
+        <p>使用默认rom时：<br>
+          原神，启启启启启启启启启启启启启启启...<br>
           <br>
+          （原神未响应）（等待）<br>
+          （系统未响....）<br>
+          （爆了）<br>
+          换rom且root：<br>
+          原神满命1145141919810帧
+        </p>
+        <hr>
+        <h2>Je sais maintenant pourquoi je suis ...</h2>
+        <h5>2024/09/14</h5>
+        <p>
+          内容已被加密，请联系1308061599QQ获取密码<br>
+          <button type="button" class="btn btn-primary" data-toggle="collapse"
+            data-target="#encrypted20240914">展开被加密内容</button>
+        <div id="encrypted20240914" class="collapse">
+          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
+GCGQ1xS0yU8zWE7XdNXDnQ==
         </div>
+
+        </p>
+        <hr>
+        <h2>就6月12日在我和<span class="redacted">[REDACTED]</span><sup>2</sup>发生的一件事上是否有蹊跷？</h2>
+        <h5>2024/09/11, 2024/09/13</h5>
+        <p>
+          内容已被加密，请联系1308061599QQ获取密码<br>
+          <button type="button" class="btn btn-primary" data-toggle="collapse"
+            data-target="#encrypted20240911">展开被加密内容</button>
+        <div id="encrypted20240911" class="collapse">
+          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
+
+        </div>
+
+        </p>
+        <hr>
+        <h2>导航栏"1187"的由来</h2>
+        <h5>2024/09/07</h5>
+        <p>我之前在<span class="redacted">[REDACTED]</span><sup>2</sup>的服务器使用过一个名字，在<span
+            class="redacted">???</span>事件发生后，我就根据这个名字的ASCII编码的和得出1187.</p>
+
+        <hr>
+        <h2>别乱接收文件</h2>
+        <h5>2024/03/29</h5>
+        <p>否则你就会和我一样就要<br>
+          返せ!返せ!ボクの6.604e10 bytes dataを👿👿 悪の手から未来の欠片を取り返す😭💔💔ボクの使命だこの身の全てが滅びようとも😡✊<br>
+          返せ!返せ!ボクの6.604e10 bytes dataを👿👿 1187 必ず見つけだして😎👉また幸せな温もりをこのBYDの肌で感じたい😫🤲💞💞
+          <br>
       </div>
-      <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#hvidescription">Hyper Volume Incremental game description</button>
-      <div id="hvidescription" class="collapse text-center">
-        如何游玩<br>
-        <br>
-        https://veryrrdefine.github.io/hyper-volume-incremental-v1<br>
-        <br>
-        多维体积增量（下面简称HVI）是一个增量 游戏，<br>
-        在游戏的初始界面，你可以看见8个Dimensions和11个mm<sup>4</sup>（4维体积），<br>
-        你可以购买1个维度，第一维度生产4维体积，第二维度生产第一维度，以此类推<br>
-        <br>
-        当你达到一定的条件之后，你就可以购买升级，有些是提升QoL(生活质量)的，有些是提升某些维度的，有些是解锁新内容的。<br>
-        <br>
-        当你达到1.145×10<sup>92</sup>（简写1.145e92）mm<sup>4</sup>四维体积之后，你将会解锁�ElV��In���a�ֱ�������߈����H�K��)�,����M��I�-���I��䟢����$��I�
-      </div>
-      
     </div>
+    <!--<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#hvidescription">Hyper Volume
+      Incremental game description</button>
+    <div id="hvidescription" class="collapse text-center">
+      如何游玩<br>
+      <br>
+      https://veryrrdefine.github.io/hyper-volume-incremental-v1<br>
+      <br>
+      多维体积增量（下面简称HVI）是一个增量 游戏，<br>
+      在游戏的初始界面，你可以看见8个Dimensions和11个mm<sup>4</sup>（4维体积），<br>
+      你可以购买1个维度，第一维度生产4维体积，第二维度生产第一维度，以此类推<br>
+      <br>
+      当你达到一定的条件之后，你就可以购买升级，有些是提升QoL(生活质量)的，有些是提升某些维度的，有些是解锁新内容的。<br>
+      <br>
+      当你达到1.145×10<sup>92</sup>（简写1.145e92）mm<sup>4</sup>四维体积之后，你将会解锁�ElV��In���a�ֱ�������߈����H�K��)�,����M��I�-���I��䟢����$��I�
+    </div>-->
     
-  </body>
+    
+  </div>
+  <script>
+  </script>
+</body>
+
 </html>
