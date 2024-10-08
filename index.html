@@ -233,6 +233,73 @@
       animation: a-replicanti--happy 5s linear infinite, a-replicanti--glow 10s infinite;
       display: inline-flex;
     }
+    .button {
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+#flash-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 324px;
+  height: 133px;
+  background-image: url(GDD.png);
+  background-repeat: no-repeat;
+}
+        .dv {
+            margin:0 auto;
+            background:-webkit-linear-gradient(left,#FF0000,#0000CD 25%,#FF0000 50%,#0000CD 75%,#FF0000);
+            color:transparent;
+            -webkit-background-clip:text;
+            background-size:200% 100%;
+            animation:masked-animation 3s infinite linear;
+        }
+        @-webkit-keyframes masked-animation {
+            0% {
+                background-position:0 0;
+            }
+            100% {
+                background-position:-100% 0;
+            }
+        }
+
+
   </style>
 </head>
 
@@ -244,9 +311,6 @@
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="/event/">事件</a>
-        </li>
         <li class="nav-item">
           <a class="nav-link" href="#">你好</a>
         </li>
@@ -264,6 +328,8 @@
     <h2 class="text-center">欢迎来到VeryrrDefine的主页！</h2>
     <p class="text-center" style="font-size: 16;">Welcome to VeryrrDefine's HomePage!</p>
     <hr>
+    <hr>
+    </div>
     <div class="row">
 
       <div class="col-sm-4">
@@ -291,6 +357,12 @@
       </div>
       <div class="col-sm-8">
         有部分内容被AES加密了，加密/解密：https://www.sojson.com/encrypt_aes.html
+        <hr>
+        <h2>How</h2>
+        <h5>2024/10/02</h5>
+        <p>
+          目前我打算永久删除4个被加密的文章.
+        </p>
         <hr>
         <h2>Just a number</h2>
         <h5>2024/09/15</h5>
@@ -597,6 +669,10 @@ Z2kY4ivyhCsUd/UOAzxR/D6pLJkV8uSKBnEs5u6Sg7bRCx+r1VEZNSpI+PvdEKaa
           <br>
       </div>
     </div>
+
+    
+    <h2 class="text-center">VeryrrDefineの快乐老挝</h2><br>
+    <p align="center"><a class="button" href="IT/index.html"><span>技术展示区</span></a></p><br>
     <!--<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#hvidescription">Hyper Volume
       Incremental game description</button>
     <div id="hvidescription" class="collapse text-center">
