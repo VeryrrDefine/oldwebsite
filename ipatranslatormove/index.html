@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap core CSS -->
+    <script>
+        
+    function query2(name) {
+      var reg = new RegExp(`(^|&)${name}=([^&]*)(&|$)`);
+      var r = window.location.search.substr(1).match(reg);
+      if (r != null) return unescape(r[2]); return null;
+
+    }
+    </script>
+</head>
+
+<body>
+    <!-- Begin page content -->
+    <div class="container">
+        <!--
+      <div class="mt-1">
+        <h1>English IPA Translator</h1>
+        <h4>paragraph -> IPA</h4>
+        <hr>
+      </div>
+	  -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Be translated:</label>
+                    <textarea class="form-control" rows="10" id="cWords_tBox" onfocusin="this.select();"
+                        onkeyup="update_result()" placeholder="Input some words. " style="width: 462px;"
+                        ></textarea>
+                </div>
+            </div>
+            <div class="col-md-6">
+
+                <div class="form-group">
+                    <label>IPA:</label>
+                    <textarea class="form-control" rows="10" id="IPA_tBox" disabled="true"  style="width: 462px;"></textarea>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <hr style="width:100%;" />
+            <div class="mt-1">
+                <strong>Settings</strong>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-check ">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" checked="checked" onchange="update_result()"
+                            id="wf_c_words">
+                        Include the word in the IPA translation
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted">Special thanks to: LOTUS FA</span>
+        </div>
+    </footer>
+
+    <div id="demo"></div>
+
+    <script src="./main.js"></script>
+    <script>
+        var lang = 0
+        
+        var lang_opt = [
+            {
+                defaulttext: `Reply to this email directly, view it on GitHub, or unsubscribe.`,
+                datafile: "./en_US.json"
+            },
+            {
+                defaulttext: `Je suis le chat`,
+                datafile: "./fr_FR.json"
+            },
+            {
+                defaulttext: "神のまにまに\n誰もが地球を愛している！",
+                datafile: "./ja.json",
+                splitmode: 1,
+            }
+        ]
+        document.getElementById("cWords_tBox").value = (lang_opt[lang].defaulttext)
+    </script>
+    <script>
+        init(lang_opt[lang].datafile)
+    </script>
+</body>
+
+</html>
